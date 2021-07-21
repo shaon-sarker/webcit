@@ -1,67 +1,56 @@
 <?php require "../session.php";  ?>
-<?php require '../dashboard_part/dashboard_header.php';  ?>
+<?php require '../dashboard_part/dashboard_header.php'; ?>
+<?php
 
-<div class="container">
-    <div class="row">
-        <div class="col-lg-10">
-        <div class="card pd-20 pd-sm-40 mg-t-50">
-          <h6 class="card-body-title">Full Color Variations for Table</h6>
-          <p class="mg-b-20 mg-sm-b-30">A custom color for the head of the tables.</p>
+require '../db.php';
 
-          <div class="table-responsive">
-            <table class="table table-hover table-bordered table-primary mg-b-0">
-              <thead>
-                <tr>
-                  <th>
-                    <label class="ckbox mg-b-0">
-                      <input type="checkbox"><span></span>
-                    </label>
-                  </th>
-                  <th>Name</th>
-                  <th>Position</th>
-                  <th>Salary</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>
-                    <label class="ckbox mg-b-0">
-                      <input type="checkbox"><span></span>
-                    </label>
-                  </td>
-                  <td>Tiger Nixon</td>
-                  <td>System Architect</td>
-                  <td>$320,800</td>
-                </tr>
-                <tr>
-                  <td>
-                    <label class="ckbox mg-b-0">
-                      <input type="checkbox"><span></span>
-                    </label>
-                  </td>
-                  <td>Garrett Winters</td>
-                  <td>Accountant</td>
-                  <td>$170,750</td>
-                </tr>
-                <tr>
-                  <td>
-                    <label class="ckbox mg-b-0">
-                      <input type="checkbox"><span></span>
-                    </label>
-                  </td>
-                  <td>Ashton Cox</td>
-                  <td>Junior Technical Author</td>
-                  <td>$86,000</td>
-                </tr>
-              </tbody>
-            </table>
-          </div><!-- table-responsive -->
+$sql = "SELECT * FROM projects";
+$result = mysqli_query($db_conn,$sql);
 
+?> 
+
+<section class="ml-5">
+  <div class="container">
+      <div class="row">
+          <div class="col-lg-12 ml-5">
+            <h1 class="bg-primary text-center p-3 text-white">View Projects</h1>
+          </div>
+      </div>
+  </div>
+  <div class="container">
+      <div class="row">
+        <div class="col-lg-12 ml-5 mt-3">
+        <table class="table table-dark">
+          <thead>
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Project Pic</th>
+              <th scope="col">Project NO</th>
+              <th scope="col">Project Head</th>
+              <th scope="col">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+          <?php foreach($result as $projects){ ?>
+            <tr>
+              <th><?= $projects['id'] ?></th>
+              <td><img width='80px' src="../uploads/projects/<?php echo $projects['project_pic'] ?>" alt=""></td>
+              <td><?= $projects['project_no'] ?></td>
+              <td><?= $projects['project_head'] ?></td>
+              <td>
+                <a href="" class="p-2"><i class="fa fa-eye fa-lg" aria-hidden="true"></i></a>
+                <a href="" class="p-2"><i class="fa fa-pencil fa-lg" aria-hidden="true"></i></a>
+                <a href="" class="p-2"><i class="fa fa-trash fa-lg" aria-hidden="true"></i></a>
+              </td>
+            </tr>
+
+          <?php } ?>
+          </tbody>
+        </table>
         </div>
-    </div>
-
-</div>
-        
+      </div>
+  </div>
+</section>
 
 
  <?php require '../dashboard_part/dashboard_footer.php';  ?>

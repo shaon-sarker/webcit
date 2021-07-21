@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 12, 2021 at 03:57 PM
+-- Generation Time: Jul 21, 2021 at 08:42 AM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.0.7
 
@@ -111,6 +111,27 @@ INSERT INTO `blogs` (`id`, `blog_pic`, `blog_title`, `blog_date`, `blog_descrip`
 (3, '3.jpg', 'React Form Validation', '2021-07-11', 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters,'),
 (4, '4.jpg', 'Wordpress Website', '2021-07-12', 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters,'),
 (5, '5.jpg', 'App Landing Website', '2021-07-14', 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters,');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `categorys`
+--
+
+CREATE TABLE `categorys` (
+  `id` int(11) NOT NULL,
+  `category_name` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `categorys`
+--
+
+INSERT INTO `categorys` (`id`, `category_name`) VALUES
+(1, 'Web Design'),
+(2, ' Development'),
+(3, 'Graphic Design'),
+(4, 'Mobile Apps');
 
 -- --------------------------------------------------------
 
@@ -347,7 +368,8 @@ INSERT INTO `teams` (`id`, `team_pic`, `team_heading`, `team_subhead`, `descript
 (2, '2.jpg', 'Aaron H. Roloff', 'Web Designer', 'orem ipsum dolor sit amet, consectetur adipisicing elit. Ad ipsa minus earum nulla accusamus soluta harum, error cupiditate illo nostrum, maiores, aspernatur provident necessitatibus quasi praesentium. Exercitationem, quas, mollitia? Nobis.'),
 (3, '3.jpg', 'Mary C. Dodson', 'Digital Marketing', 'orem ipsum dolor sit amet, consectetur adipisicing elit. Ad ipsa minus earum nulla accusamus soluta harum, error cupiditate illo nostrum, maiores, aspernatur provident necessitatibus quasi praesentium. Exercitationem, quas, mollitia? Nobis.'),
 (4, '4.jpg', 'Sylvia E. Harper', 'Graphic Designer', 'orem ipsum dolor sit amet, consectetur adipisicing elit. Ad ipsa minus earum nulla accusamus soluta harum, error cupiditate illo nostrum, maiores, aspernatur provident necessitatibus quasi praesentium. Exercitationem, quas, mollitia? Nobis.'),
-(5, '5.jpg', 'Robert J. Ostrander', 'UI/UX Designer', 'orem ipsum dolor sit amet, consectetur adipisicing elit. Ad ipsa minus earum nulla accusamus soluta harum, error cupiditate illo nostrum, maiores, aspernatur provident necessitatibus quasi praesentium. Exercitationem, quas, mollitia? Nobis.');
+(5, '5.jpg', 'Robert J. Ostrander', 'UI/UX Designer', 'orem ipsum dolor sit amet, consectetur adipisicing elit. Ad ipsa minus earum nulla accusamus soluta harum, error cupiditate illo nostrum, maiores, aspernatur provident necessitatibus quasi praesentium. Exercitationem, quas, mollitia? Nobis.'),
+(6, '6.jpg', 'Jhone DOe', 'Web Developer', 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem ');
 
 -- --------------------------------------------------------
 
@@ -366,6 +388,34 @@ CREATE TABLE `videos` (
 
 INSERT INTO `videos` (`id`, `video_title`) VALUES
 (1, '1.mp4');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `works`
+--
+
+CREATE TABLE `works` (
+  `id` int(11) NOT NULL,
+  `work_title` varchar(100) NOT NULL,
+  `work_subtitle` varchar(100) NOT NULL,
+  `work_photo` varchar(50) NOT NULL,
+  `category_no` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `works`
+--
+
+INSERT INTO `works` (`id`, `work_title`, `work_subtitle`, `work_photo`, `category_no`) VALUES
+(1, 'Enter Project Title', 'Web Design', '1.jpg', 1),
+(2, 'Enter Project Title', 'Web Design', '2.jpg', 1),
+(3, 'Enter Project Tittle', 'Web Development', '3.jpg', 2),
+(4, 'Enter Project Title', 'Web Development', '4.jpg', 2),
+(5, 'Enter Project Title', 'Graphic Design', '5.jpg', 3),
+(6, 'Enter Project Title', 'Mobile Aops', '6.jpg', 4),
+(7, 'Wordpress', 'Wordpress Work', '7.jpg', 4),
+(8, 'Graphic Design', 'Graphics Design Works', '8.jpg', 3);
 
 --
 -- Indexes for dumped tables
@@ -393,6 +443,12 @@ ALTER TABLE `admins`
 -- Indexes for table `blogs`
 --
 ALTER TABLE `blogs`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `categorys`
+--
+ALTER TABLE `categorys`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -462,6 +518,12 @@ ALTER TABLE `videos`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `works`
+--
+ALTER TABLE `works`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -488,6 +550,12 @@ ALTER TABLE `admins`
 --
 ALTER TABLE `blogs`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `categorys`
+--
+ALTER TABLE `categorys`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `contact`
@@ -547,13 +615,19 @@ ALTER TABLE `slideshows`
 -- AUTO_INCREMENT for table `teams`
 --
 ALTER TABLE `teams`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `videos`
 --
 ALTER TABLE `videos`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `works`
+--
+ALTER TABLE `works`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
